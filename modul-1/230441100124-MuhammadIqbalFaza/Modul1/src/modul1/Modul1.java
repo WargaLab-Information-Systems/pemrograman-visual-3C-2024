@@ -2,13 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
-package bebas;
+package modul1;
 
 /**
  *
  * @author faza
  */
-public class Bebas {
+public class Modul1 {
 
     /**
      * @param args the command line arguments
