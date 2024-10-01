@@ -2,13 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
-package praktikum1;
+package pemvismodul1;
 
 /**
  *
  * @author User
  */
-public class Praktikum1 {
+public class PemvisModul1 {
 
     /**
      * @param args the command line arguments
