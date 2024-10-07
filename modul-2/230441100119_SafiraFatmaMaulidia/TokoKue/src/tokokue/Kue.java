@@ -3,9 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package tokokue;
-
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
 /**
@@ -21,6 +18,7 @@ public class Kue extends javax.swing.JFrame {
         initComponents();
     total.setEditable(false);    
     kembalian.setEditable(false); 
+    jumlah.setEditable(false);
     }
 
     /**
@@ -510,7 +508,8 @@ public class Kue extends javax.swing.JFrame {
     }//GEN-LAST:event_resetActionPerformed
 
     private void cashActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cashActionPerformed
-   
+
+        
     }//GEN-LAST:event_cashActionPerformed
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
@@ -521,21 +520,21 @@ public class Kue extends javax.swing.JFrame {
     });
 }                                   
 
-private void hitungKembalian() {
-    try {
-        int totalHarga = Integer.parseInt(total.getText());  
-        int uangCash = Integer.parseInt(cash.getText());   
+    private void hitungKembalian() {
+        try {
+            int totalHarga = Integer.parseInt(total.getText());  
+            int uangCash = Integer.parseInt(cash.getText());   
 
-       
-        if (uangCash >= totalHarga) {
-            int uangKembalian = uangCash - totalHarga;  
-            kembalian.setText(String.valueOf(uangKembalian));  
-        } else {
-            kembalian.setText("Uang tidak cukup"); 
+
+            if (uangCash >= totalHarga) {
+                int uangKembalian = uangCash - totalHarga;  
+                kembalian.setText(String.valueOf(uangKembalian));  
+            } else {
+                kembalian.setText("Uang tidak cukup"); 
+            }
+        } catch (NumberFormatException e) {
+            kembalian.setText("");
         }
-    } catch (NumberFormatException e) {
-        kembalian.setText("");
-    }
     }//GEN-LAST:event_formComponentShown
 
     private void totalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totalActionPerformed
@@ -576,7 +575,6 @@ private void hitungKembalian() {
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup bgkue;
     private javax.swing.ButtonGroup bgtopping;
