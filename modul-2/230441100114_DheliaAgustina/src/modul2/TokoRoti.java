@@ -40,9 +40,6 @@ public class TokoRoti extends javax.swing.JFrame {
         muffin = new javax.swing.JRadioButton();
         waffle = new javax.swing.JRadioButton();
         mochi = new javax.swing.JRadioButton();
-        coklat = new javax.swing.JRadioButton();
-        strawberry = new javax.swing.JRadioButton();
-        notopping = new javax.swing.JRadioButton();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -54,6 +51,9 @@ public class TokoRoti extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
+        strawberry = new javax.swing.JCheckBox();
+        coklat = new javax.swing.JCheckBox();
+        notopping = new javax.swing.JCheckBox();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         tambah = new javax.swing.JButton();
@@ -123,30 +123,6 @@ public class TokoRoti extends javax.swing.JFrame {
         buttonGroup1.add(mochi);
         mochi.setText("Mochi - 6K");
 
-        buttonGroup2.add(coklat);
-        coklat.setText("Coklat - 3k");
-        coklat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                coklatActionPerformed(evt);
-            }
-        });
-
-        buttonGroup2.add(strawberry);
-        strawberry.setText("Strawberry - 4k");
-        strawberry.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                strawberryActionPerformed(evt);
-            }
-        });
-
-        buttonGroup2.add(notopping);
-        notopping.setText("No topping - 0");
-        notopping.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                notoppingActionPerformed(evt);
-            }
-        });
-
         jLabel10.setIcon(new javax.swing.ImageIcon("C:\\Users\\LENOVO\\Downloads\\donat_11zon.png")); // NOI18N
 
         jLabel11.setIcon(new javax.swing.ImageIcon("C:\\Users\\LENOVO\\Downloads\\Pancake_11zon.png")); // NOI18N
@@ -204,6 +180,17 @@ public class TokoRoti extends javax.swing.JFrame {
 
         jLabel19.setIcon(new javax.swing.ImageIcon("C:\\Users\\LENOVO\\Downloads\\download__7_-removebg-preview (1)_11zon.png")); // NOI18N
 
+        strawberry.setText("Strawberry - 4k");
+
+        coklat.setText("Coklat - 3k");
+        coklat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                coklatActionPerformed(evt);
+            }
+        });
+
+        notopping.setText("No topping - 0");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -231,41 +218,43 @@ public class TokoRoti extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(17, 17, 17)
-                                .addComponent(jLabel13))
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addGap(17, 17, 17)
+                                        .addComponent(jLabel13))
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addContainerGap()
+                                        .addComponent(muffin)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addComponent(panecake)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(croissant))
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                                .addGap(21, 21, 21)
+                                                .addComponent(jLabel15))
+                                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                                .addGap(6, 6, 6)
+                                                .addComponent(waffle)))
+                                        .addGap(29, 29, 29)
+                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(mochi)
+                                            .addComponent(jLabel14)))))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(muffin)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(panecake)
-                                .addGap(18, 18, 18)
-                                .addComponent(croissant))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addGap(21, 21, 21)
-                                        .addComponent(jLabel15))
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addGap(6, 6, 6)
-                                        .addComponent(waffle)))
-                                .addGap(29, 29, 29)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(mochi)
-                                    .addComponent(jLabel14)))))
+                                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 37, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(notopping)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                .addComponent(coklat)
-                .addGap(18, 18, 18)
-                .addComponent(strawberry)
-                .addGap(17, 17, 17))
+                        .addComponent(notopping, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(coklat, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(strawberry, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -302,12 +291,11 @@ public class TokoRoti extends javax.swing.JFrame {
                 .addGap(17, 17, 17)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(notopping, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(strawberry)
-                        .addComponent(coklat)))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(strawberry)
+                    .addComponent(coklat)
+                    .addComponent(notopping))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\LENOVO\\Downloads\\download__6_-removebg-preview_11zon.png")); // NOI18N
@@ -465,7 +453,7 @@ public class TokoRoti extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(reset, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(keluar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -514,27 +502,19 @@ public class TokoRoti extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(100, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(142, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void strawberryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_strawberryActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_strawberryActionPerformed
-
-    private void notoppingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_notoppingActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_notoppingActionPerformed
 
     private void tambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tambahActionPerformed
         // TODO add your handling code here:
@@ -583,11 +563,13 @@ public class TokoRoti extends javax.swing.JFrame {
         }
         
         if (coklat.isSelected()){
-            hargaTopping = 3000;
-        }else if (strawberry.isSelected()){
-            hargaTopping = 4000;
-        }else if (notopping.isSelected()){
-            hargaTopping = 0;
+            hargaTopping += 3000;
+        }
+        if (strawberry.isSelected()){
+            hargaTopping += 4000;
+        }
+        if (notopping.isSelected()){
+            hargaTopping += 0;
         }
         
         int totalHarga = (hargaItem + hargaTopping) * jumlah;
@@ -613,7 +595,9 @@ public class TokoRoti extends javax.swing.JFrame {
         jTextFieldkembali.setText(null);
         jTextFieldcash.setText(null);
         buttonGroup1.clearSelection();
-        buttonGroup2.clearSelection();
+        coklat.setSelected(false);
+        strawberry.setSelected(false);
+        notopping.setSelected(false);
     }//GEN-LAST:event_resetActionPerformed
 
     private void panecakeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_panecakeActionPerformed
@@ -631,10 +615,6 @@ public class TokoRoti extends javax.swing.JFrame {
     private void muffinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_muffinActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_muffinActionPerformed
-
-    private void coklatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coklatActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_coklatActionPerformed
 
     private void keluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_keluarActionPerformed
         // TODO add your handling code here:
@@ -654,12 +634,19 @@ public class TokoRoti extends javax.swing.JFrame {
         jTextFieldkembali.setText("");
         jTextFieldkembali.setEditable(false);
         
-        jTextFieldcash.addKeyListener(new java.awt.event.KeyAdapter() {
+        jTextFieldJumlah.setText("0");
+        jTextFieldJumlah.setEditable(false);
+        
+        jTextFieldcash.addKeyListener(new java.awt.event.KeyAdapter() {//merespon
         public void keyReleased(java.awt.event.KeyEvent evt) {
             hitungKembalian();
         }
     });
     }//GEN-LAST:event_formComponentShown
+
+    private void coklatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coklatActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_coklatActionPerformed
         
         private void hitungKembalian() {
     try {
@@ -720,7 +707,7 @@ public class TokoRoti extends javax.swing.JFrame {
     private javax.swing.JButton BtnTotal;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
-    private javax.swing.JRadioButton coklat;
+    private javax.swing.JCheckBox coklat;
     private javax.swing.JRadioButton croissant;
     private javax.swing.JRadioButton donat;
     private javax.swing.JLabel jLabel1;
@@ -754,10 +741,10 @@ public class TokoRoti extends javax.swing.JFrame {
     private javax.swing.JButton kurang;
     private javax.swing.JRadioButton mochi;
     private javax.swing.JRadioButton muffin;
-    private javax.swing.JRadioButton notopping;
+    private javax.swing.JCheckBox notopping;
     private javax.swing.JRadioButton panecake;
     private javax.swing.JButton reset;
-    private javax.swing.JRadioButton strawberry;
+    private javax.swing.JCheckBox strawberry;
     private javax.swing.JButton tambah;
     private javax.swing.JRadioButton waffle;
     // End of variables declaration//GEN-END:variables
