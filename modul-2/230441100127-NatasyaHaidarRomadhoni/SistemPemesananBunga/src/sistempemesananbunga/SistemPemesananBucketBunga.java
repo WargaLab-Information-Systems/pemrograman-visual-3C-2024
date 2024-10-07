@@ -64,9 +64,6 @@ public class SistemPemesananBucketBunga extends javax.swing.JFrame {
         rbMysticalDelight = new javax.swing.JRadioButton();
         jSeparator1 = new javax.swing.JSeparator();
         lAksenTambahan = new javax.swing.JLabel();
-        rbOrnamenDaun = new javax.swing.JRadioButton();
-        rbHiasanBintang = new javax.swing.JRadioButton();
-        rbKainGoni = new javax.swing.JRadioButton();
         jSeparator2 = new javax.swing.JSeparator();
         lJumlah = new javax.swing.JLabel();
         btnTambah = new javax.swing.JButton();
@@ -93,6 +90,9 @@ public class SistemPemesananBucketBunga extends javax.swing.JFrame {
         lCharmingWhimsy = new javax.swing.JLabel();
         rbRadiantCelebration = new javax.swing.JRadioButton();
         lRadiantCelebration = new javax.swing.JLabel();
+        cbHiasanBintang = new javax.swing.JCheckBox();
+        cbOrnamenBunga = new javax.swing.JCheckBox();
+        cbKainGoni = new javax.swing.JCheckBox();
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -189,29 +189,6 @@ public class SistemPemesananBucketBunga extends javax.swing.JFrame {
         lAksenTambahan.setText("Aksen Tambahan");
         jPanel2.add(lAksenTambahan, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 350, 110, -1));
 
-        btgrAksenTambahan.add(rbOrnamenDaun);
-        rbOrnamenDaun.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        rbOrnamenDaun.setForeground(new java.awt.Color(134, 26, 26));
-        rbOrnamenDaun.setText("Ornamen Daun Eucalyptus – Rp. 15.000");
-        jPanel2.add(rbOrnamenDaun, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 240, -1));
-
-        btgrAksenTambahan.add(rbHiasanBintang);
-        rbHiasanBintang.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        rbHiasanBintang.setForeground(new java.awt.Color(134, 26, 26));
-        rbHiasanBintang.setText("Hiasan Bintang Kecil – Rp. 10.000");
-        rbHiasanBintang.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbHiasanBintangActionPerformed(evt);
-            }
-        });
-        jPanel2.add(rbHiasanBintang, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 380, 230, -1));
-
-        btgrAksenTambahan.add(rbKainGoni);
-        rbKainGoni.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        rbKainGoni.setForeground(new java.awt.Color(134, 26, 26));
-        rbKainGoni.setText("Kain Goni Pembungkus – Rp. 20.000");
-        jPanel2.add(rbKainGoni, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 420, 220, -1));
-
         jSeparator2.setPreferredSize(new java.awt.Dimension(300, 2));
         jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 530, 480, 10));
 
@@ -263,6 +240,12 @@ public class SistemPemesananBucketBunga extends javax.swing.JFrame {
         lKembali.setForeground(new java.awt.Color(134, 26, 26));
         lKembali.setText("Kembali");
         jPanel2.add(lKembali, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 540, -1, -1));
+
+        tfCash.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfCashActionPerformed(evt);
+            }
+        });
         jPanel2.add(tfCash, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 560, 150, 30));
 
         tfKembali.setEditable(false);
@@ -362,6 +345,26 @@ public class SistemPemesananBucketBunga extends javax.swing.JFrame {
         lRadiantCelebration.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistempemesananbunga/icons8-bouquet-70 (2).png"))); // NOI18N
         jPanel2.add(lRadiantCelebration, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 240, -1, -1));
 
+        cbHiasanBintang.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        cbHiasanBintang.setForeground(new java.awt.Color(134, 26, 26));
+        cbHiasanBintang.setText("Hiasan Bintang Kecil – Rp. 10.000");
+        jPanel2.add(cbHiasanBintang, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 380, -1, -1));
+
+        cbOrnamenBunga.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        cbOrnamenBunga.setForeground(new java.awt.Color(134, 26, 26));
+        cbOrnamenBunga.setText("Ornamen Daun Eucalyptus – Rp. 15.000");
+        cbOrnamenBunga.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbOrnamenBungaActionPerformed(evt);
+            }
+        });
+        jPanel2.add(cbOrnamenBunga, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, -1, -1));
+
+        cbKainGoni.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        cbKainGoni.setForeground(new java.awt.Color(134, 26, 26));
+        cbKainGoni.setText("Kain Goni Pembungkus – Rp. 20.000");
+        jPanel2.add(cbKainGoni, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 420, -1, -1));
+
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistempemesananbunga/Untitled design (2).jpg"))); // NOI18N
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 660));
 
@@ -430,9 +433,9 @@ public class SistemPemesananBucketBunga extends javax.swing.JFrame {
                 else if (rbSweetRomance.isSelected()) total += 75000;
                 else if (rbMysticalDelight.isSelected()) total += 59000;
                 
-            if (rbOrnamenDaun.isSelected()) total+= 15000;
-                else if (rbHiasanBintang.isSelected()) total += 10000;
-                else if (rbKainGoni.isSelected()) total += 20000;
+            if (cbOrnamenBunga.isSelected()) total+= 15000;
+            if (cbHiasanBintang.isSelected()) total+= 10000;
+            if (cbKainGoni.isSelected()) total+= 20000;
                 
             // Hitung total berdasarkan jumlah
              total *= jumlah;
@@ -444,11 +447,8 @@ public class SistemPemesananBucketBunga extends javax.swing.JFrame {
 
              // Tampilkan total harga ke TextField 
              tfTotal.setText(String.valueOf(total));
-
-
            }
-       
-
+     
     }//GEN-LAST:event_btnTotalActionPerformed
 
     private void tfKembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfKembaliActionPerformed
@@ -461,16 +461,14 @@ public class SistemPemesananBucketBunga extends javax.swing.JFrame {
                 tfJumlah.setText("1");
                 tfCash.setText("");
                 btgrKatalog.clearSelection();
-                btgrAksenTambahan.clearSelection();
+                cbOrnamenBunga.setSelected(false);
+                cbHiasanBintang.setSelected(false);
+                cbKainGoni.setSelected(false);
     }//GEN-LAST:event_btnResetActionPerformed
 
     private void rbBloomingHarmonyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbBloomingHarmonyActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_rbBloomingHarmonyActionPerformed
-
-    private void rbHiasanBintangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbHiasanBintangActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rbHiasanBintangActionPerformed
 
     private void btnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahActionPerformed
             int jumlah = Integer.parseInt(tfJumlah.getText());
@@ -493,6 +491,14 @@ public class SistemPemesananBucketBunga extends javax.swing.JFrame {
     private void rbCharmingWhimsyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbCharmingWhimsyActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_rbCharmingWhimsyActionPerformed
+
+    private void tfCashActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfCashActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfCashActionPerformed
+
+    private void cbOrnamenBungaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbOrnamenBungaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbOrnamenBungaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -538,6 +544,9 @@ public class SistemPemesananBucketBunga extends javax.swing.JFrame {
     private javax.swing.JButton btnReset;
     private javax.swing.JButton btnTambah;
     private javax.swing.JButton btnTotal;
+    private javax.swing.JCheckBox cbHiasanBintang;
+    private javax.swing.JCheckBox cbKainGoni;
+    private javax.swing.JCheckBox cbOrnamenBunga;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -572,10 +581,7 @@ public class SistemPemesananBucketBunga extends javax.swing.JFrame {
     private javax.swing.JRadioButton rbBloomingHarmony;
     private javax.swing.JRadioButton rbCharmingWhimsy;
     private javax.swing.JRadioButton rbGoldenSunshine;
-    private javax.swing.JRadioButton rbHiasanBintang;
-    private javax.swing.JRadioButton rbKainGoni;
     private javax.swing.JRadioButton rbMysticalDelight;
-    private javax.swing.JRadioButton rbOrnamenDaun;
     private javax.swing.JRadioButton rbRadiantCelebration;
     private javax.swing.JRadioButton rbSweetRomance;
     private javax.swing.JTextField tfCash;
