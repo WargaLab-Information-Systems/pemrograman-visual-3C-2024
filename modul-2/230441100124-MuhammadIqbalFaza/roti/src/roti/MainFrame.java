@@ -23,31 +23,22 @@ public class MainFrame extends javax.swing.JFrame {
     int jumlahPesanan = 0;
     public MainFrame() {
         initComponents();
-        txtCash.getDocument().addDocumentListener(new DocumentListener() {
-            public void changedUpdate(DocumentEvent e) {
-                hitungkembalian();
-            }
-            public void removeUpdate(DocumentEvent e) {
-                hitungkembalian();
-            }
-            public void insertUpdate(DocumentEvent e) {
-                hitungkembalian();
-            }
         
-        });
     }
     
-    public void hitungkembalian() {
-        try {
-            int totalHarga = Integer.parseInt(txtTotal.getText());
-            int cash = Integer.parseInt(txtCash.getText());
-            int kembalian = cash - totalHarga;
-
-            txtKembalian.setText(String.valueOf(kembalian));
-        } catch (NumberFormatException ex) {
-            txtKembalian.setText("");
-        }
+    public void resetInput() {
+        GroupMenu.clearSelection();           
+        checkKacangAlmond.setSelected(false);  
+        checkKejuCheddar.setSelected(false);
+        checkKrimVanilla.setSelected(false);
+        checkTanpaTopping.setSelected(false);
+        txtJumlahPesanan.setText("");          
+        txtTotal.setText("");                  
+        txtCash.setText("");                  
+        txtKembalian.setText(""); 
+        jumlahPesanan = 0; 
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -70,9 +61,6 @@ public class MainFrame extends javax.swing.JFrame {
         menu5 = new javax.swing.JRadioButton();
         menu6 = new javax.swing.JRadioButton();
         lblTopping = new javax.swing.JLabel();
-        topping1 = new javax.swing.JRadioButton();
-        topping2 = new javax.swing.JRadioButton();
-        topping3 = new javax.swing.JRadioButton();
         jmlPesanan = new javax.swing.JLabel();
         txtJumlahPesanan = new javax.swing.JTextField();
         btnTambah = new javax.swing.JButton();
@@ -87,6 +75,10 @@ public class MainFrame extends javax.swing.JFrame {
         btnReset = new javax.swing.JButton();
         btnKeluar = new javax.swing.JButton();
         txtTotal = new javax.swing.JTextField();
+        checkKacangAlmond = new javax.swing.JCheckBox();
+        checkKejuCheddar = new javax.swing.JCheckBox();
+        checkKrimVanilla = new javax.swing.JCheckBox();
+        checkTanpaTopping = new javax.swing.JCheckBox();
         img1 = new javax.swing.JLabel();
         img2 = new javax.swing.JLabel();
         namaToko = new javax.swing.JLabel();
@@ -131,25 +123,6 @@ public class MainFrame extends javax.swing.JFrame {
 
         lblTopping.setText("Topping");
 
-        GroupTopping.add(topping1);
-        topping1.setText("Kacang Almond - Rp 8,000");
-        topping1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                topping1ActionPerformed(evt);
-            }
-        });
-
-        GroupTopping.add(topping2);
-        topping2.setText("Keju Cheddar Parut - Rp 5,000");
-
-        GroupTopping.add(topping3);
-        topping3.setText("Krim Vanilla - Rp 6,000");
-        topping3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                topping3ActionPerformed(evt);
-            }
-        });
-
         jmlPesanan.setText("Jumlah Pesanan");
 
         txtJumlahPesanan.setEditable(false);
@@ -177,7 +150,18 @@ public class MainFrame extends javax.swing.JFrame {
 
         lblCash.setText("Cash");
 
+        txtCash.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                txtCashMouseReleased(evt);
+            }
+        });
         txtCash.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtCashKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtCashKeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtCashKeyTyped(evt);
             }
@@ -233,6 +217,19 @@ public class MainFrame extends javax.swing.JFrame {
 
         txtTotal.setEditable(false);
 
+        checkKacangAlmond.setText("Kacang Almond - Rp 8,000");
+
+        checkKejuCheddar.setText("Keju Cheddar Parut - Rp 5,000");
+
+        checkKrimVanilla.setText("Krim Vanilla - Rp 6,000");
+        checkKrimVanilla.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkKrimVanillaActionPerformed(evt);
+            }
+        });
+
+        checkTanpaTopping.setText("Tanpa Topping - Rp.0");
+
         javax.swing.GroupLayout roundedPanel1Layout = new javax.swing.GroupLayout(roundedPanel1);
         roundedPanel1.setLayout(roundedPanel1Layout);
         roundedPanel1Layout.setHorizontalGroup(
@@ -241,71 +238,76 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(roundedPanel1Layout.createSequentialGroup()
                 .addGroup(roundedPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(roundedPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(roundedPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(roundedPanel1Layout.createSequentialGroup()
-                                .addGroup(roundedPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(roundedPanel1Layout.createSequentialGroup()
-                                        .addComponent(topping1)
-                                        .addGap(260, 260, 260))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, roundedPanel1Layout.createSequentialGroup()
-                                        .addComponent(menu4)
-                                        .addGap(87, 87, 87)
-                                        .addComponent(menu5)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                .addGroup(roundedPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(menu3)
-                                    .addComponent(menu6)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, roundedPanel1Layout.createSequentialGroup()
-                                .addComponent(menu1)
-                                .addGap(97, 97, 97)
-                                .addComponent(menu2)
-                                .addGap(28, 28, 28))
-                            .addGroup(roundedPanel1Layout.createSequentialGroup()
-                                .addGroup(roundedPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(roundedPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundedPanel1Layout.createSequentialGroup()
-                                            .addGroup(roundedPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(roundedPanel1Layout.createSequentialGroup()
-                                                    .addGap(25, 25, 25)
-                                                    .addComponent(btnKurang)
-                                                    .addGap(18, 18, 18)
-                                                    .addComponent(txtJumlahPesanan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addGap(18, 18, 18)
-                                                    .addComponent(btnTambah))
-                                                .addGroup(roundedPanel1Layout.createSequentialGroup()
-                                                    .addGap(264, 264, 264)
-                                                    .addGroup(roundedPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(jmlPesanan)
-                                                        .addGroup(roundedPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                            .addComponent(lblPembayaran)
-                                                            .addComponent(btnTotal)))))
-                                            .addGap(79, 79, 79))
-                                        .addGroup(roundedPanel1Layout.createSequentialGroup()
-                                            .addGap(230, 230, 230)
-                                            .addGroup(roundedPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(lblKembalian)
-                                                .addComponent(topping2))
-                                            .addGap(18, 18, 18)))
-                                    .addGroup(roundedPanel1Layout.createSequentialGroup()
-                                        .addGap(14, 14, 14)
-                                        .addComponent(lblCash)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(txtCash, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(230, 230, 230)))
-                                .addGroup(roundedPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtKembalian, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(roundedPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(txtTotal, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(topping3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                .addGap(23, 23, 23))))
-                    .addGroup(roundedPanel1Layout.createSequentialGroup()
                         .addGap(306, 306, 306)
                         .addComponent(lblMenu))
                     .addGroup(roundedPanel1Layout.createSequentialGroup()
                         .addGap(304, 304, 304)
-                        .addComponent(lblTopping)))
+                        .addComponent(lblTopping))
+                    .addGroup(roundedPanel1Layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addGroup(roundedPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(roundedPanel1Layout.createSequentialGroup()
+                                .addComponent(lblCash)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtCash, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(roundedPanel1Layout.createSequentialGroup()
+                                .addComponent(btnKurang)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtJumlahPesanan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnTambah)))))
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(roundedPanel1Layout.createSequentialGroup()
+                .addGroup(roundedPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(roundedPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(roundedPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(roundedPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(roundedPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundedPanel1Layout.createSequentialGroup()
+                                        .addComponent(menu4)
+                                        .addGap(87, 87, 87)
+                                        .addComponent(menu5)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(roundedPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(menu3)
+                                            .addComponent(menu6)))
+                                    .addGroup(roundedPanel1Layout.createSequentialGroup()
+                                        .addComponent(menu1)
+                                        .addGap(97, 97, 97)
+                                        .addComponent(menu2)
+                                        .addGap(28, 28, 28)))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundedPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(roundedPanel1Layout.createSequentialGroup()
+                                        .addGap(251, 251, 251)
+                                        .addComponent(jmlPesanan))
+                                    .addGroup(roundedPanel1Layout.createSequentialGroup()
+                                        .addGroup(roundedPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(roundedPanel1Layout.createSequentialGroup()
+                                                .addGap(257, 257, 257)
+                                                .addComponent(lblPembayaran))
+                                            .addComponent(btnTotal, javax.swing.GroupLayout.Alignment.TRAILING))
+                                        .addGap(19, 19, 19)
+                                        .addGroup(roundedPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(roundedPanel1Layout.createSequentialGroup()
+                                                .addGap(38, 38, 38)
+                                                .addComponent(lblKembalian)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(txtKembalian, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(roundedPanel1Layout.createSequentialGroup()
+                                                .addGap(83, 83, 83)
+                                                .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                            .addGroup(roundedPanel1Layout.createSequentialGroup()
+                                .addComponent(checkKacangAlmond)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(checkKejuCheddar)
+                                .addGap(40, 40, 40)
+                                .addComponent(checkKrimVanilla)
+                                .addGap(8, 8, 8))))
+                    .addGroup(roundedPanel1Layout.createSequentialGroup()
+                        .addGap(258, 258, 258)
+                        .addComponent(checkTanpaTopping)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         roundedPanel1Layout.setVerticalGroup(
             roundedPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -324,35 +326,34 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(menu6))
                 .addGap(18, 18, 18)
                 .addComponent(lblTopping)
-                .addGap(18, 18, 18)
+                .addGap(16, 16, 16)
                 .addGroup(roundedPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(topping1)
-                    .addComponent(topping2)
-                    .addComponent(topping3))
+                    .addComponent(checkKacangAlmond)
+                    .addComponent(checkKejuCheddar)
+                    .addComponent(checkKrimVanilla))
                 .addGap(18, 18, 18)
+                .addComponent(checkTanpaTopping)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addComponent(jmlPesanan)
-                .addGap(18, 18, 18)
+                .addGap(28, 28, 28)
                 .addGroup(roundedPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnKurang)
                     .addComponent(txtJumlahPesanan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnTambah)
-                    .addComponent(btnKurang)
                     .addComponent(btnTotal)
                     .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
+                .addGap(14, 14, 14)
                 .addComponent(lblPembayaran)
-                .addGap(7, 7, 7)
+                .addGap(14, 14, 14)
                 .addGroup(roundedPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(roundedPanel1Layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addGroup(roundedPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblCash)
-                            .addComponent(txtCash, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblKembalian)
-                            .addComponent(txtKembalian, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 87, Short.MAX_VALUE))
-                    .addGroup(roundedPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundedPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblCash)
+                        .addComponent(txtCash, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundedPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblKembalian)
+                        .addComponent(txtKembalian, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         img1.setIcon(new javax.swing.ImageIcon("C:\\Users\\faza\\Downloads\\Teks paragraf Anda (150 x 100 piksel) (4).png")); // NOI18N
@@ -444,27 +445,15 @@ public class MainFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtJumlahPesananActionPerformed
 
-    private void topping3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_topping3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_topping3ActionPerformed
-
     private void menu6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu6ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_menu6ActionPerformed
-
-    private void topping1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_topping1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_topping1ActionPerformed
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
         // TODO add your handling code here:
         int konfirmasi = JOptionPane.showConfirmDialog(null,"Apakah anda yakin ingin reset?","Reset",JOptionPane.YES_NO_CANCEL_OPTION );
         if(konfirmasi== JOptionPane.YES_OPTION){
-           GroupMenu.clearSelection();
-            GroupTopping.clearSelection();
-            txtJumlahPesanan.setText("");
-            txtCash.setText("");
-            txtKembalian.setText(""); 
+           resetInput();
         }
         
     }//GEN-LAST:event_btnResetActionPerformed
@@ -479,58 +468,78 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void btnTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTotalActionPerformed
         // TODO add your handling code here:
-        if(GroupMenu.getSelection()==null){
+        // Cek apakah menu sudah dipilih
+        if (GroupMenu.getSelection() == null) {
             JOptionPane.showMessageDialog(null, "Pilih menu dulu coy!");
+            resetInput();
             return;
         }
-        if(GroupTopping.getSelection()==null){
-            JOptionPane.showMessageDialog(null, "Pilih topping dulu coy!");
+
+        // Cek apakah ada topping selain "Tanpa Topping" yang dipilih
+        boolean isAnyToppingSelected = checkKacangAlmond.isSelected() || checkKejuCheddar.isSelected() || checkKrimVanilla.isSelected();
+
+        // Kondisi untuk memastikan "Tanpa Topping" tidak dapat dipilih bersamaan dengan topping lain
+        if (checkTanpaTopping.isSelected() && isAnyToppingSelected) {
+            checkTanpaTopping.setSelected(false);
+            JOptionPane.showMessageDialog(null, "Anda tidak dapat memilih 'Tanpa Topping' bersama dengan topping lain.", "Error", JOptionPane.ERROR_MESSAGE);
+            resetInput();
             return;
         }
-        if(txtJumlahPesanan.getText().isEmpty()){
+
+        // Kondisi untuk memastikan setidaknya satu topping dipilih
+        if (!isAnyToppingSelected && !checkTanpaTopping.isSelected()) {
+            JOptionPane.showMessageDialog(null, "Silakan pilih minimal satu topping.", "Error", JOptionPane.ERROR_MESSAGE);
+            resetInput();
+            return;
+        }
+
+        // Cek apakah jumlah pesanan telah diisi dan valid
+        if (txtJumlahPesanan.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Isikan jumlah pesanan dulu coy!");
-        }else if(jumlahPesanan==0){
-            JOptionPane.showMessageDialog(null, "jangan diisi 0 coy!");
+            resetInput();
+            return;
+        } else if (jumlahPesanan == 0) {
+            JOptionPane.showMessageDialog(null, "Jangan diisi 0 coy!");
+            resetInput();
+            return;
         }
-    
+
         // Mengambil harga menu dan topping yang dipilih
-            int hargaMenu = 0;
-            int hargaTopping = 0;
+        int hargaMenu = 0;
+        int hargaTopping = 0;
 
-            // Pilih harga menu
-            if (menu1.isSelected()) {
-                hargaMenu = 15000;
-            } else if (menu2.isSelected()) {
-                hargaMenu = 10000;
-            } else if (menu3.isSelected()) {
-                hargaMenu = 20000;
-            } else if (menu4.isSelected()) {
-                hargaMenu = 22000;
-            } else if (menu5.isSelected()) {
-                hargaMenu = 35000;
-            } else if (menu6.isSelected()) {
-                hargaMenu = 18000;
-            }
+        // Pilih harga menu
+        if (menu1.isSelected()) {
+            hargaMenu = 15000;
+        } else if (menu2.isSelected()) {
+            hargaMenu = 10000;
+        } else if (menu3.isSelected()) {
+            hargaMenu = 20000;
+        } else if (menu4.isSelected()) {
+            hargaMenu = 22000;
+        } else if (menu5.isSelected()) {
+            hargaMenu = 35000;
+        } else if (menu6.isSelected()) {
+            hargaMenu = 18000;
+        }
 
-            // Pilih harga topping
-            if (topping1.isSelected()) {
-                hargaTopping = 8000;
-            } else if (topping2.isSelected()) {
-                hargaTopping = 5000;
-            } else if (topping3.isSelected()) {
-                hargaTopping = 6000;
-            }
+        // Cek topping yang dipilih
+        if (checkKacangAlmond.isSelected()) hargaTopping += 8000;
+        if (checkKejuCheddar.isSelected()) hargaTopping += 5000;
+        if (checkKrimVanilla.isSelected()) hargaTopping += 6000;
+        if (checkTanpaTopping.isSelected()) hargaTopping += 0;
 
-            // Menghitung total harga
-            int totalHarga = (hargaMenu + hargaTopping) * jumlahPesanan;
+        // Menghitung total harga
+        int totalHarga = (hargaMenu + hargaTopping) * jumlahPesanan;
 
-            
+        // Terapkan diskon jika total lebih dari Rp 100.000
+        if (totalHarga >= 100000) {
+            double diskon = 0.05 * totalHarga;
+            totalHarga -= diskon;
+        }
 
-            if(totalHarga>=100000){
-                double diskon = 0.05*totalHarga;
-                totalHarga -= diskon;
-            }
-            txtTotal.setText(String.valueOf(totalHarga));
+        txtTotal.setText(String.valueOf(totalHarga));
+
     }//GEN-LAST:event_btnTotalActionPerformed
 
     private void txtCashKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCashKeyTyped
@@ -540,6 +549,39 @@ public class MainFrame extends javax.swing.JFrame {
             evt.consume();
         }
     }//GEN-LAST:event_txtCashKeyTyped
+
+    private void checkKrimVanillaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkKrimVanillaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_checkKrimVanillaActionPerformed
+
+    private void txtCashKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCashKeyReleased
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_txtCashKeyReleased
+
+    private void txtCashKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCashKeyPressed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_txtCashKeyPressed
+
+    private void txtCashMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCashMouseReleased
+        // TODO add your handling code here:
+        try {
+            int totalHarga = Integer.parseInt(txtTotal.getText());  
+            int cash = Integer.parseInt(txtCash.getText());         
+            int kembalian = cash - totalHarga;                       
+
+            if (kembalian < 0) {
+                // Tampilkan pesan error jika kembalian negatif
+                JOptionPane.showMessageDialog(null, "Uang yang Anda masukkan kurang.", "Peringatan", JOptionPane.WARNING_MESSAGE);
+                txtKembalian.setText(""); 
+            } else {
+                txtKembalian.setText(String.valueOf(kembalian)); 
+            }
+        } catch (NumberFormatException ex) {
+            txtKembalian.setText(""); 
+        }
+    }//GEN-LAST:event_txtCashMouseReleased
 
     /**
      * @param args the command line arguments
@@ -585,6 +627,10 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnReset;
     private javax.swing.JButton btnTambah;
     private javax.swing.JButton btnTotal;
+    private javax.swing.JCheckBox checkKacangAlmond;
+    private javax.swing.JCheckBox checkKejuCheddar;
+    private javax.swing.JCheckBox checkKrimVanilla;
+    private javax.swing.JCheckBox checkTanpaTopping;
     private javax.swing.JLabel img1;
     private javax.swing.JLabel img2;
     private javax.swing.JPanel jPanel1;
@@ -604,9 +650,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel namaToko;
     private Custom.RoundedPanel roundedPanel1;
     private javax.swing.JLabel tagline;
-    private javax.swing.JRadioButton topping1;
-    private javax.swing.JRadioButton topping2;
-    private javax.swing.JRadioButton topping3;
     private javax.swing.JTextField txtCash;
     private javax.swing.JTextField txtJumlahPesanan;
     private javax.swing.JTextField txtKembalian;
