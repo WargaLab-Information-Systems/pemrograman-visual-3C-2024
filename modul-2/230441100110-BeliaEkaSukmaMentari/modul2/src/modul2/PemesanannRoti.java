@@ -16,6 +16,7 @@ public class PemesanannRoti extends javax.swing.JFrame {
     private int total = 0;
     private int breadPrice = 0;
     private int toppingPrice = 0;
+    private int totalToppingPrice = 0;
     
     public PemesanannRoti() {
         initComponents();
@@ -46,10 +47,6 @@ public class PemesanannRoti extends javax.swing.JFrame {
         rbAbonRoll = new javax.swing.JRadioButton();
         rbEggBun = new javax.swing.JRadioButton();
         jLabel6 = new javax.swing.JLabel();
-        rbChococips = new javax.swing.JRadioButton();
-        rbChocoCrunch = new javax.swing.JRadioButton();
-        rbStrawberry = new javax.swing.JRadioButton();
-        rbKeju = new javax.swing.JRadioButton();
         jLabel7 = new javax.swing.JLabel();
         btnMin = new javax.swing.JButton();
         tfJumlah = new javax.swing.JTextField();
@@ -62,6 +59,10 @@ public class PemesanannRoti extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         tfKembali = new javax.swing.JTextField();
         btnReset = new javax.swing.JButton();
+        cbChococips = new javax.swing.JCheckBox();
+        cbChocoCrunch = new javax.swing.JCheckBox();
+        cbStrawberry = new javax.swing.JCheckBox();
+        cbKeju = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -189,46 +190,6 @@ public class PemesanannRoti extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("TOPPING");
 
-        btgrpTopping.add(rbChococips);
-        rbChococips.setFont(new java.awt.Font("Cambria", 1, 12)); // NOI18N
-        rbChococips.setForeground(new java.awt.Color(255, 255, 255));
-        rbChococips.setText("Chococips - Rp. 3.000");
-        rbChococips.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbChococipsActionPerformed(evt);
-            }
-        });
-
-        btgrpTopping.add(rbChocoCrunch);
-        rbChocoCrunch.setFont(new java.awt.Font("Cambria", 1, 12)); // NOI18N
-        rbChocoCrunch.setForeground(new java.awt.Color(255, 255, 255));
-        rbChocoCrunch.setText("Choco Crunch - Rp. 3.500");
-        rbChocoCrunch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbChocoCrunchActionPerformed(evt);
-            }
-        });
-
-        btgrpTopping.add(rbStrawberry);
-        rbStrawberry.setFont(new java.awt.Font("Cambria", 1, 12)); // NOI18N
-        rbStrawberry.setForeground(new java.awt.Color(255, 255, 255));
-        rbStrawberry.setText("Strawberry - Rp. 4.000");
-        rbStrawberry.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbStrawberryActionPerformed(evt);
-            }
-        });
-
-        btgrpTopping.add(rbKeju);
-        rbKeju.setFont(new java.awt.Font("Cambria", 1, 12)); // NOI18N
-        rbKeju.setForeground(new java.awt.Color(255, 255, 255));
-        rbKeju.setText("Keju - Rp. 3.500");
-        rbKeju.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbKejuActionPerformed(evt);
-            }
-        });
-
         jLabel7.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("JUMLAH");
@@ -292,62 +253,46 @@ public class PemesanannRoti extends javax.swing.JFrame {
             }
         });
 
+        cbChococips.setFont(new java.awt.Font("Cambria", 1, 12)); // NOI18N
+        cbChococips.setForeground(new java.awt.Color(255, 255, 255));
+        cbChococips.setText("Chococips - Rp. 3.000");
+        cbChococips.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbChococipsActionPerformed(evt);
+            }
+        });
+
+        cbChocoCrunch.setFont(new java.awt.Font("Cambria", 1, 12)); // NOI18N
+        cbChocoCrunch.setForeground(new java.awt.Color(255, 255, 255));
+        cbChocoCrunch.setText("Choco Crunch - Rp. 3.500");
+        cbChocoCrunch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbChocoCrunchActionPerformed(evt);
+            }
+        });
+
+        cbStrawberry.setFont(new java.awt.Font("Cambria", 1, 12)); // NOI18N
+        cbStrawberry.setForeground(new java.awt.Color(255, 255, 255));
+        cbStrawberry.setText("Strawberry - Rp. 4.000");
+        cbStrawberry.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbStrawberryActionPerformed(evt);
+            }
+        });
+
+        cbKeju.setFont(new java.awt.Font("Cambria", 1, 12)); // NOI18N
+        cbKeju.setForeground(new java.awt.Color(255, 255, 255));
+        cbKeju.setText("Keju - Rp. 3.500");
+        cbKeju.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbKejuActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                                    .addComponent(rbChocoCheese)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(rbPillowCokelat))
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(rbFlossRoll)
-                                        .addComponent(rbAbonRoll))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(rbEggBun)
-                                        .addComponent(rbChickenFloss))))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(4, 4, 4)
-                                .addComponent(btnMin, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(tfJumlah, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnPlus, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(48, 48, 48)
-                                .addComponent(btnTotal))))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(tfCash, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(82, 82, 82)
-                        .addComponent(jLabel7)))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(rbStrawberry)
-                            .addComponent(rbChococips)
-                            .addComponent(rbKeju)
-                            .addComponent(rbChocoCrunch))
-                        .addGap(0, 55, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(11, 11, 11)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfKembali, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(tfTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(jLabel8)
-                                    .addGap(45, 45, 45))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(95, 95, 95)
                 .addComponent(jLabel9)
@@ -357,6 +302,57 @@ public class PemesanannRoti extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(21, 21, 21)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                            .addComponent(rbChocoCheese)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(rbPillowCokelat))
+                                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(rbFlossRoll)
+                                                .addComponent(rbAbonRoll))
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(rbEggBun)
+                                                .addComponent(rbChickenFloss))))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGap(4, 4, 4)
+                                        .addComponent(btnMin, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(tfJumlah, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(btnPlus, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(48, 48, 48)
+                                        .addComponent(btnTotal))))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(48, 48, 48)
+                                .addComponent(tfCash, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(82, 82, 82)
+                                .addComponent(jLabel7)))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(11, 11, 11)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tfKembali, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(tfTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                            .addComponent(jLabel8)
+                                            .addGap(45, 45, 45)))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cbStrawberry)
+                                    .addComponent(cbChocoCrunch)
+                                    .addComponent(cbKeju)
+                                    .addComponent(cbChococips))
+                                .addGap(39, 39, 39))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(143, 143, 143)
                         .addComponent(jLabel5)
                         .addGap(202, 202, 202)
@@ -364,7 +360,7 @@ public class PemesanannRoti extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(254, 254, 254)
                         .addComponent(btnReset)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -377,19 +373,19 @@ public class PemesanannRoti extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rbChocoCheese)
                     .addComponent(rbPillowCokelat)
-                    .addComponent(rbChococips))
+                    .addComponent(cbChococips))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rbFlossRoll)
                     .addComponent(rbChickenFloss)
-                    .addComponent(rbChocoCrunch))
+                    .addComponent(cbChocoCrunch))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rbAbonRoll)
                     .addComponent(rbEggBun)
-                    .addComponent(rbStrawberry))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(rbKeju)
+                    .addComponent(cbStrawberry))
+                .addGap(5, 5, 5)
+                .addComponent(cbKeju)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
@@ -411,7 +407,7 @@ public class PemesanannRoti extends javax.swing.JFrame {
                     .addComponent(tfKembali, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnReset)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 119, 610, 340));
@@ -429,16 +425,14 @@ public class PemesanannRoti extends javax.swing.JFrame {
     }//GEN-LAST:event_tfJumlahActionPerformed
 
     private void btnTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTotalActionPerformed
-        // Cek apakah pengguna sudah memilih roti tetapi belum memilih jumlah (quantity masih 0)
+        // pengguna sudah memilih roti tetapi belum memilih jumlah (quantity masih 0)
         if (breadPrice > 0 && quantity == 0) {
             JOptionPane.showMessageDialog(this, "Mohon pilih jumlah pesanan!", "Jumlah Kosong", JOptionPane.WARNING_MESSAGE);
         }
-        // Cek apakah belum ada roti yang dipilih atau topping yang dipilih
+        // belum ada roti yang dipilih atau topping yang dipilih
         else if (quantity == 0 || (breadPrice == 0 && toppingPrice == 0)) {
-            // Tampilkan pesan peringatan untuk memilih menu roti dan topping
             JOptionPane.showMessageDialog(this, "Silakan pilih menu roti dan topping terlebih dahulu!", "Pesanan Kosong", JOptionPane.WARNING_MESSAGE);
         } else {
-            // Jika sudah ada pesanan valid, baru hitung totalnya
             updateTotal();
         }
     }//GEN-LAST:event_btnTotalActionPerformed
@@ -476,22 +470,6 @@ public class PemesanannRoti extends javax.swing.JFrame {
         updateBreadPrice(13000);
     }//GEN-LAST:event_rbEggBunActionPerformed
 
-    private void rbChococipsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbChococipsActionPerformed
-        updateToppingPrice(3000);
-    }//GEN-LAST:event_rbChococipsActionPerformed
-
-    private void rbChocoCrunchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbChocoCrunchActionPerformed
-        updateToppingPrice(3500);
-    }//GEN-LAST:event_rbChocoCrunchActionPerformed
-
-    private void rbStrawberryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbStrawberryActionPerformed
-        updateToppingPrice(4000);
-    }//GEN-LAST:event_rbStrawberryActionPerformed
-
-    private void rbKejuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbKejuActionPerformed
-        updateToppingPrice(3500);
-    }//GEN-LAST:event_rbKejuActionPerformed
-
     private void tfCashActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfCashActionPerformed
         calculateChange();
     }//GEN-LAST:event_tfCashActionPerformed
@@ -506,21 +484,41 @@ public class PemesanannRoti extends javax.swing.JFrame {
         // Tampilkan jumlah pesanan di tfJumlah
         tfJumlah.setText(String.valueOf(quantity));
     }//GEN-LAST:event_btnPlusActionPerformed
+
+    private void cbStrawberryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbStrawberryActionPerformed
+        updateToppingPrice(4000, cbStrawberry.isSelected());
+    }//GEN-LAST:event_cbStrawberryActionPerformed
+
+    private void cbChococipsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbChococipsActionPerformed
+        updateToppingPrice(3000, cbChococips.isSelected());
+    }//GEN-LAST:event_cbChococipsActionPerformed
+
+    private void cbChocoCrunchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbChocoCrunchActionPerformed
+        updateToppingPrice(3500, cbChocoCrunch.isSelected());
+    }//GEN-LAST:event_cbChocoCrunchActionPerformed
+
+    private void cbKejuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbKejuActionPerformed
+        updateToppingPrice(3500, cbKeju.isSelected());
+    }//GEN-LAST:event_cbKejuActionPerformed
  
     private void updateBreadPrice(int price) {
         breadPrice = price;
         updateTotal();
     }
     
-    private void updateToppingPrice(int price) {
-        toppingPrice = price;
+    private void updateToppingPrice(int toppingPrice, boolean isSelected) {
+        if (isSelected) {
+            totalToppingPrice += toppingPrice;
+        } else {
+            totalToppingPrice -= toppingPrice;
+        }
         updateTotal();
     }
     
     private void updateTotal() {
         // Hitung total harga sebelum diskon
-        total = (breadPrice + toppingPrice) * quantity;
-
+        total = (breadPrice + totalToppingPrice) * quantity;
+        
         // Jika total lebih dari 100.000, terapkan diskon 5%
         if (total > 100000) {
             double diskon = total * 0.05;  // 5% dari total
@@ -532,17 +530,14 @@ public class PemesanannRoti extends javax.swing.JFrame {
         tfTotal.setText(String.valueOf(total));
 
     }
-    
-    private void calculateTotal() {
-        updateTotal();
-        JOptionPane.showMessageDialog(this, "Total: Rp. " + total);
-    }
+
     
     private void resetForm() {
         quantity = 0;
         total = 0;
         breadPrice = 0;
         toppingPrice = 0;
+        totalToppingPrice = 0;
         
         ButtonGroup breadGroup = new ButtonGroup();
         breadGroup.add(rbChocoCheese);
@@ -553,12 +548,11 @@ public class PemesanannRoti extends javax.swing.JFrame {
         breadGroup.add(rbEggBun);
         breadGroup.clearSelection();
 
-        ButtonGroup toppingGroup = new ButtonGroup();
-        toppingGroup.add(rbChococips);
-        toppingGroup.add(rbChocoCrunch);
-        toppingGroup.add(rbStrawberry);
-        toppingGroup.add(rbKeju);
-        toppingGroup.clearSelection();
+        cbChococips.setSelected(false);
+        cbChocoCrunch.setSelected(false);
+        cbStrawberry.setSelected(false);
+        cbKeju.setSelected(false);
+
 
         tfJumlah.setText("0");
         tfTotal.setText("0");
@@ -622,6 +616,10 @@ public class PemesanannRoti extends javax.swing.JFrame {
     private javax.swing.JButton btnPlus;
     private javax.swing.JButton btnReset;
     private javax.swing.JButton btnTotal;
+    private javax.swing.JCheckBox cbChocoCrunch;
+    private javax.swing.JCheckBox cbChococips;
+    private javax.swing.JCheckBox cbKeju;
+    private javax.swing.JCheckBox cbStrawberry;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -637,13 +635,9 @@ public class PemesanannRoti extends javax.swing.JFrame {
     private javax.swing.JRadioButton rbAbonRoll;
     private javax.swing.JRadioButton rbChickenFloss;
     private javax.swing.JRadioButton rbChocoCheese;
-    private javax.swing.JRadioButton rbChocoCrunch;
-    private javax.swing.JRadioButton rbChococips;
     private javax.swing.JRadioButton rbEggBun;
     private javax.swing.JRadioButton rbFlossRoll;
-    private javax.swing.JRadioButton rbKeju;
     private javax.swing.JRadioButton rbPillowCokelat;
-    private javax.swing.JRadioButton rbStrawberry;
     private javax.swing.JTextField tfCash;
     private javax.swing.JTextField tfJumlah;
     private javax.swing.JTextField tfKembali;
