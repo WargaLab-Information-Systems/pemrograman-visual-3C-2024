@@ -2,13 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
-package tugaspraktikum1;
+package tugasmodul2;
 
 /**
  *
- * @author ramad
+ * @author HP
  */
-public class TugasPraktikum1 {
+public class TugasModul2 {
 
     /**
      * @param args the command line arguments
