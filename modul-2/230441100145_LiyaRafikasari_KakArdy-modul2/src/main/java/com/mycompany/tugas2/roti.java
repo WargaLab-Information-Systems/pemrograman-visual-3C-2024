@@ -52,9 +52,6 @@ public class roti extends javax.swing.JFrame {
         jRadioButton6 = new javax.swing.JRadioButton();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jRadioButton7 = new javax.swing.JRadioButton();
-        jRadioButton8 = new javax.swing.JRadioButton();
-        jRadioButton9 = new javax.swing.JRadioButton();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
@@ -69,6 +66,9 @@ public class roti extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jTextField3 = new javax.swing.JTextField();
+        jCheckBox1 = new javax.swing.JCheckBox();
+        jCheckBox2 = new javax.swing.JCheckBox();
+        jCheckBox3 = new javax.swing.JCheckBox();
         jPanel4 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -131,27 +131,21 @@ public class roti extends javax.swing.JFrame {
 
         jLabel11.setText("Tambahan Tooping :");
 
-        buttonGroup2.add(jRadioButton7);
-        jRadioButton7.setText("Keju - 5.000");
-        jRadioButton7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton7ActionPerformed(evt);
-            }
-        });
-
-        buttonGroup2.add(jRadioButton8);
-        jRadioButton8.setText("Chochochip - 5.000");
-
-        buttonGroup2.add(jRadioButton9);
-        jRadioButton9.setText("Beng-beng - 5.000");
-
         jLabel12.setText("--------------------------------------------------------------------------------------------------");
 
         jLabel13.setText("Jumlah :");
 
+        jTextField4.setEditable(false);
+
         jLabel15.setText("--------------------------------------------------------------------------------------------------");
 
         jLabel16.setText("Cash");
+
+        jTextField8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField8ActionPerformed(evt);
+            }
+        });
 
         jLabel17.setText("Kembali");
 
@@ -196,6 +190,19 @@ public class roti extends javax.swing.JFrame {
             }
         });
 
+        jTextField3.setEditable(false);
+
+        jCheckBox1.setText("Keju - 5.000");
+
+        jCheckBox2.setText("Chochochip - 5.000");
+        jCheckBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox2ActionPerformed(evt);
+            }
+        });
+
+        jCheckBox3.setText("Beng-beng - 5.000");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -234,43 +241,43 @@ public class roti extends javax.swing.JFrame {
                                         .addComponent(jLabel17)
                                         .addGap(168, 168, 168))))))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel9)
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jRadioButton1)
-                                        .addComponent(jRadioButton2))
-                                    .addGap(40, 40, 40)
-                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jRadioButton3)
-                                        .addComponent(jRadioButton4))
-                                    .addGap(35, 35, 35)
-                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jRadioButton5)
-                                        .addComponent(jRadioButton6))))))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel12)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
+                                .addGap(15, 15, 15)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel9)
+                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jRadioButton1)
+                                                .addComponent(jRadioButton2))
+                                            .addGap(40, 40, 40)
+                                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jRadioButton3)
+                                                .addComponent(jRadioButton4))
+                                            .addGap(35, 35, 35)
+                                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jRadioButton5)
+                                                .addComponent(jRadioButton6))))))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel10)
+                                    .addComponent(jLabel12)
                                     .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addComponent(jRadioButton7)
-                                        .addGap(42, 42, 42)
-                                        .addComponent(jRadioButton8)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jRadioButton9)
-                                        .addGap(63, 63, 63))
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
                                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                                .addGap(6, 6, 6)
+                                                .addComponent(jCheckBox1)
+                                                .addGap(53, 53, 53)
+                                                .addComponent(jCheckBox2)
+                                                .addGap(52, 52, 52)
+                                                .addComponent(jCheckBox3))
                                             .addComponent(jLabel11)
                                             .addComponent(jLabel13)
                                             .addGroup(jPanel3Layout.createSequentialGroup()
@@ -282,8 +289,8 @@ public class roti extends javax.swing.JFrame {
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                 .addComponent(Hitung)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGap(0, 0, Short.MAX_VALUE)))))))
+                                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -315,9 +322,9 @@ public class roti extends javax.swing.JFrame {
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton7)
-                    .addComponent(jRadioButton8)
-                    .addComponent(jRadioButton9))
+                    .addComponent(jCheckBox1)
+                    .addComponent(jCheckBox2)
+                    .addComponent(jCheckBox3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel12)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -405,10 +412,6 @@ public class roti extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void jRadioButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton7ActionPerformed
-
     private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField9ActionPerformed
@@ -422,7 +425,7 @@ public class roti extends javax.swing.JFrame {
         // TODO add your handling code here:
         jTextField1.setText("");
         jTextField2.setText("");
-        jTextField9.setText("");
+        jTextField4.setText("0");
         jTextField3.setText("");
         jTextField9.setText("");
         jTextField8.setText("");
@@ -470,27 +473,47 @@ public class roti extends javax.swing.JFrame {
             hargaItem = 10000;
         }
 
-        if (jRadioButton8.isSelected()){
+        if (jCheckBox1.isSelected()){
             hargaTopping = 5000;
-        }else if (jRadioButton9.isSelected()){
+        }else if (jCheckBox2.isSelected()){
             hargaTopping = 5000;
-        }else if (jRadioButton7.isSelected()){
+        }else if (jCheckBox3.isSelected()){
             hargaTopping = 0;
         }
 
-        int totalHarga = (hargaItem + hargaTopping) * jumlah;
+        int totalHarga = (hargaItem + hargaTopping + hargaTopping + hargaTopping) * jumlah;
 
         if (totalHarga > 100000){
             double diskon = 0.05;
-            totalHarga -= totalHarga * diskon;
+            totalHarga -= totalHarga * diskon; 
         }
         jTextField3.setText(Integer.toString(totalHarga));
 
-        int inihasilnyabang = Integer.parseInt(jTextField9.getText());
-        int hasilsemua = inihasilnyabang - totalHarga;
-        jTextField8.setText(Integer.toString(hasilsemua));
+        int inihasilnya = Integer.parseInt(jTextField9.getText());
+        int hasilsemua = inihasilnya - totalHarga;
+        jTextField8.setText(Integer.toString(hasilsemua)); 
+        
+if (inihasilnya < totalHarga) {
+    // If the money is less than the total price
+    jTextField8.setText("Uang Anda kurang!");
+} else if (inihasilnya == totalHarga) {
+    // If the money is exactly equal to the total price
+    jTextField8.setText("Uang Anda pas.");
+} else {
+    // If the money is more than the total price
+    jTextField8.setText("Uang kembalian Anda: " + Integer.toString(hasilsemua));
+}
+
         }
     }//GEN-LAST:event_HitungActionPerformed
+
+    private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox2ActionPerformed
+
+    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField8ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -535,6 +558,9 @@ public class roti extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox jCheckBox2;
+    private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -557,9 +583,6 @@ public class roti extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButton4;
     private javax.swing.JRadioButton jRadioButton5;
     private javax.swing.JRadioButton jRadioButton6;
-    private javax.swing.JRadioButton jRadioButton7;
-    private javax.swing.JRadioButton jRadioButton8;
-    private javax.swing.JRadioButton jRadioButton9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;
