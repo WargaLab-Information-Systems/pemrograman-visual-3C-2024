@@ -8,11 +8,18 @@ package tugasmodul2;
  *
  * @author HP
  */
-public class MakoBakery extends javax.swing.JFrame {
+import javax.swing.*;
+import java.awt.event.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-    /**
-     * Creates new form MakoBakery
-     */
+public class MakoBakery extends javax.swing.JFrame {
+    private int quantity = 0;
+    private int total = 0;
+    private int breadPrice = 0;
+    private int toppingPrice = 0;
+    private int totalToppingPrice = 0;
+
     public MakoBakery() {
         initComponents();
     }
@@ -28,6 +35,10 @@ public class MakoBakery extends javax.swing.JFrame {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         buttonGroup2 = new javax.swing.ButtonGroup();
+        buttonGroup3 = new javax.swing.ButtonGroup();
+        buttonGroup4 = new javax.swing.ButtonGroup();
+        buttonGroup5 = new javax.swing.ButtonGroup();
+        jCheckBox1 = new javax.swing.JCheckBox();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -41,12 +52,6 @@ public class MakoBakery extends javax.swing.JFrame {
         rbChantilly = new javax.swing.JRadioButton();
         rbCroissant = new javax.swing.JRadioButton();
         jLabel5 = new javax.swing.JLabel();
-        rbCheese = new javax.swing.JRadioButton();
-        rbChoco = new javax.swing.JRadioButton();
-        rbBrownSugar = new javax.swing.JRadioButton();
-        rbAlmond = new javax.swing.JRadioButton();
-        rbSilverqueen = new javax.swing.JRadioButton();
-        rbNoTopping = new javax.swing.JRadioButton();
         jLabel6 = new javax.swing.JLabel();
         btnKurang = new javax.swing.JButton();
         tfJumlah = new javax.swing.JTextField();
@@ -56,15 +61,21 @@ public class MakoBakery extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         tfCash = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        tfKembali = new javax.swing.JTextField();
+        tfKembalian = new javax.swing.JTextField();
         btnReset = new javax.swing.JButton();
+        cbChesee = new javax.swing.JCheckBox();
+        cbChoco = new javax.swing.JCheckBox();
+        cbBrownSugar = new javax.swing.JCheckBox();
+        cbAlmond = new javax.swing.JCheckBox();
+        cbSilverqueen = new javax.swing.JCheckBox();
+        cbNoTopping = new javax.swing.JCheckBox();
+
+        jCheckBox1.setText("jCheckBox1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\HP\\Downloads\\2DFF56E2-FC59-45F8-9B05-943E89022049-removebg-preview.png")); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(153, 0, 0));
@@ -81,11 +92,11 @@ public class MakoBakery extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(85, 85, 85)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3)
-                .addContainerGap(106, Short.MAX_VALUE))
+                .addContainerGap(125, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -100,7 +111,7 @@ public class MakoBakery extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 90));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 570, 90));
 
         jPanel2.setBackground(new java.awt.Color(153, 0, 0));
 
@@ -112,75 +123,65 @@ public class MakoBakery extends javax.swing.JFrame {
         rbFlossRoll.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         rbFlossRoll.setForeground(new java.awt.Color(255, 255, 255));
         rbFlossRoll.setText("Floss Roll - Rp. 13.500");
+        rbFlossRoll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbFlossRollActionPerformed(evt);
+            }
+        });
 
         buttonGroup1.add(rbSugarPillow);
         rbSugarPillow.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         rbSugarPillow.setForeground(new java.awt.Color(255, 255, 255));
         rbSugarPillow.setText("Sugar Pillow - Rp. 8.500");
+        rbSugarPillow.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbSugarPillowActionPerformed(evt);
+            }
+        });
 
         buttonGroup1.add(rbWhiteToast);
         rbWhiteToast.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         rbWhiteToast.setForeground(new java.awt.Color(255, 255, 255));
         rbWhiteToast.setText("White Toast - Rp. 21.500");
+        rbWhiteToast.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbWhiteToastActionPerformed(evt);
+            }
+        });
 
         buttonGroup1.add(rbSausageDiva);
         rbSausageDiva.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         rbSausageDiva.setForeground(new java.awt.Color(255, 255, 255));
         rbSausageDiva.setText("Sausage Diva - Rp. 12.500");
+        rbSausageDiva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbSausageDivaActionPerformed(evt);
+            }
+        });
 
         buttonGroup1.add(rbChantilly);
         rbChantilly.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         rbChantilly.setForeground(new java.awt.Color(255, 255, 255));
         rbChantilly.setText("Chantilly - Rp. 27.500");
+        rbChantilly.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbChantillyActionPerformed(evt);
+            }
+        });
 
         buttonGroup1.add(rbCroissant);
         rbCroissant.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         rbCroissant.setForeground(new java.awt.Color(255, 255, 255));
         rbCroissant.setText("Croissant - Rp. 11.500");
+        rbCroissant.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbCroissantActionPerformed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("EXTRA TOPPING");
-
-        buttonGroup2.add(rbCheese);
-        rbCheese.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        rbCheese.setForeground(new java.awt.Color(255, 255, 255));
-        rbCheese.setText("Cheese - Rp. 6000");
-        rbCheese.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbCheeseActionPerformed(evt);
-            }
-        });
-
-        buttonGroup2.add(rbChoco);
-        rbChoco.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        rbChoco.setForeground(new java.awt.Color(255, 255, 255));
-        rbChoco.setText("Choco - Rp. 7000");
-
-        buttonGroup2.add(rbBrownSugar);
-        rbBrownSugar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        rbBrownSugar.setForeground(new java.awt.Color(255, 255, 255));
-        rbBrownSugar.setText("Brown Sugar - Rp. 5000");
-
-        buttonGroup2.add(rbAlmond);
-        rbAlmond.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        rbAlmond.setForeground(new java.awt.Color(255, 255, 255));
-        rbAlmond.setText("Almond - Rp. 11.000");
-        rbAlmond.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbAlmondActionPerformed(evt);
-            }
-        });
-
-        buttonGroup2.add(rbSilverqueen);
-        rbSilverqueen.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        rbSilverqueen.setForeground(new java.awt.Color(255, 255, 255));
-        rbSilverqueen.setText("Silverqueen - Rp. 13.000");
-
-        buttonGroup2.add(rbNoTopping);
-        rbNoTopping.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        rbNoTopping.setForeground(new java.awt.Color(255, 255, 255));
-        rbNoTopping.setText("No Topping - Rp. 0");
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -193,6 +194,7 @@ public class MakoBakery extends javax.swing.JFrame {
             }
         });
 
+        tfJumlah.setEditable(false);
         tfJumlah.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfJumlahActionPerformed(evt);
@@ -200,6 +202,11 @@ public class MakoBakery extends javax.swing.JFrame {
         });
 
         btnTambah.setText("+");
+        btnTambah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTambahActionPerformed(evt);
+            }
+        });
 
         btnTotal.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnTotal.setText("TOTAL");
@@ -210,19 +217,94 @@ public class MakoBakery extends javax.swing.JFrame {
         });
 
         tfTotal.setEditable(false);
+        tfTotal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfTotalActionPerformed(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("CASH");
 
+        tfCash.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfCashActionPerformed(evt);
+            }
+        });
+
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("KEMBALI");
+        jLabel8.setText("KEMBALIAN");
 
-        tfKembali.setEditable(false);
+        tfKembalian.setEditable(false);
+        tfKembalian.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfKembalianActionPerformed(evt);
+            }
+        });
 
         btnReset.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnReset.setText("RESET");
+        btnReset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResetActionPerformed(evt);
+            }
+        });
+
+        cbChesee.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        cbChesee.setForeground(new java.awt.Color(255, 255, 255));
+        cbChesee.setText("Chesee - Rp. 6000");
+        cbChesee.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbCheseeActionPerformed(evt);
+            }
+        });
+
+        cbChoco.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        cbChoco.setForeground(new java.awt.Color(255, 255, 255));
+        cbChoco.setText("Choco - Rp. 7000");
+        cbChoco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbChocoActionPerformed(evt);
+            }
+        });
+
+        cbBrownSugar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        cbBrownSugar.setForeground(new java.awt.Color(255, 255, 255));
+        cbBrownSugar.setText("Brown Sugar - Rp. 5000");
+        cbBrownSugar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbBrownSugarActionPerformed(evt);
+            }
+        });
+
+        cbAlmond.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        cbAlmond.setForeground(new java.awt.Color(255, 255, 255));
+        cbAlmond.setText("Almond - Rp. 11.000");
+        cbAlmond.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbAlmondActionPerformed(evt);
+            }
+        });
+
+        cbSilverqueen.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        cbSilverqueen.setForeground(new java.awt.Color(255, 255, 255));
+        cbSilverqueen.setText("Silverqueen - Rp. 13.000");
+        cbSilverqueen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbSilverqueenActionPerformed(evt);
+            }
+        });
+
+        cbNoTopping.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        cbNoTopping.setForeground(new java.awt.Color(255, 255, 255));
+        cbNoTopping.setText("No Topping - Rp. 0");
+        cbNoTopping.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbNoToppingActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -242,31 +324,31 @@ public class MakoBakery extends javax.swing.JFrame {
                             .addComponent(rbFlossRoll))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(rbCheese)
                             .addComponent(jLabel5)
-                            .addComponent(rbChoco)
-                            .addComponent(rbAlmond)
-                            .addComponent(rbBrownSugar)
-                            .addComponent(rbSilverqueen)
-                            .addComponent(rbNoTopping))
-                        .addGap(58, 58, 58))
+                            .addComponent(cbChesee)
+                            .addComponent(cbChoco)
+                            .addComponent(cbBrownSugar)
+                            .addComponent(cbAlmond)
+                            .addComponent(cbSilverqueen)
+                            .addComponent(cbNoTopping))
+                        .addGap(63, 63, 63))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel6)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(btnKurang)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(tfJumlah, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
-                                    .addComponent(jLabel6))
+                                        .addComponent(tfJumlah, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnTambah)
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnTotal)
                                 .addGap(18, 18, 18)
                                 .addComponent(tfTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(btnReset))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel7)
@@ -275,7 +357,7 @@ public class MakoBakery extends javax.swing.JFrame {
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(tfCash, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel8)
-                                    .addComponent(tfKembali, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(tfKembalian, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addContainerGap())))))
         );
         jPanel2Layout.setVerticalGroup(
@@ -288,27 +370,27 @@ public class MakoBakery extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rbFlossRoll)
-                    .addComponent(rbCheese))
+                    .addComponent(cbChesee))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rbSugarPillow)
-                    .addComponent(rbChoco))
+                    .addComponent(cbChoco))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rbWhiteToast)
-                    .addComponent(rbBrownSugar))
+                    .addComponent(cbBrownSugar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rbSausageDiva)
-                    .addComponent(rbAlmond))
+                    .addComponent(cbAlmond))
                 .addGap(12, 12, 12)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rbChantilly)
-                    .addComponent(rbSilverqueen))
+                    .addComponent(cbSilverqueen))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rbCroissant)
-                    .addComponent(rbNoTopping))
+                    .addComponent(cbNoTopping))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -327,37 +409,201 @@ public class MakoBakery extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel8)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfKembali, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnReset))
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnReset)
+                    .addComponent(tfKembalian, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 549, 410));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 570, 430));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void rbCheeseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbCheeseActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rbCheeseActionPerformed
-
-    private void rbAlmondActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbAlmondActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rbAlmondActionPerformed
-
     private void tfJumlahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfJumlahActionPerformed
-        // TODO add your handling code here:
+        try {
+            quantity = Integer.parseInt(tfJumlah.getText());
+            updateTotal();
+            
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "Invalid quantity input!");
+    }
+        
     }//GEN-LAST:event_tfJumlahActionPerformed
 
     private void btnTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTotalActionPerformed
-        // TODO add your handling code here:
+        if (breadPrice > 0 && quantity == 0) {
+            JOptionPane.showMessageDialog(this, "Mohon pilih jumlah pesanan!", "Pesanan Kosong", JOptionPane.WARNING_MESSAGE);
+        }
+        
+        else if (quantity == 0 || (breadPrice == 0 && toppingPrice == 0)) {
+            JOptionPane.showMessageDialog(this, "Silakan pilih menu roti dan topping terlebih dahulu!", "Pesanan Kosong", JOptionPane.WARNING_MESSAGE);
+        } else {
+            updateTotal();
+        }
     }//GEN-LAST:event_btnTotalActionPerformed
 
     private void btnKurangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKurangActionPerformed
-        // TODO add your handling code here:
+        if (quantity > 0) {
+            quantity--;
+        }
+        
+        tfJumlah.setText(String.valueOf(quantity));
     }//GEN-LAST:event_btnKurangActionPerformed
 
+    private void rbSugarPillowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbSugarPillowActionPerformed
+        updateBreadPrice(8500);
+    }//GEN-LAST:event_rbSugarPillowActionPerformed
+
+    private void rbFlossRollActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbFlossRollActionPerformed
+        updateBreadPrice(13500);
+    }//GEN-LAST:event_rbFlossRollActionPerformed
+
+    private void rbWhiteToastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbWhiteToastActionPerformed
+        updateBreadPrice(21500);
+    }//GEN-LAST:event_rbWhiteToastActionPerformed
+
+    private void rbSausageDivaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbSausageDivaActionPerformed
+         updateBreadPrice(12500);
+    }//GEN-LAST:event_rbSausageDivaActionPerformed
+
+    private void rbChantillyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbChantillyActionPerformed
+        updateBreadPrice(27500);
+    }//GEN-LAST:event_rbChantillyActionPerformed
+
+    private void rbCroissantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbCroissantActionPerformed
+        updateBreadPrice(11500);
+    }//GEN-LAST:event_rbCroissantActionPerformed
+
+    private void tfTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfTotalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfTotalActionPerformed
+
+    private void tfCashActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfCashActionPerformed
+        calculateChange();
+    }//GEN-LAST:event_tfCashActionPerformed
+
+    private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
+        resetForm();
+    }//GEN-LAST:event_btnResetActionPerformed
+
+    private void tfKembalianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfKembalianActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfKembalianActionPerformed
+
+    private void cbCheseeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbCheseeActionPerformed
+        updateToppingPrice(6000, cbChesee.isSelected());
+    }//GEN-LAST:event_cbCheseeActionPerformed
+
+    private void cbChocoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbChocoActionPerformed
+       updateToppingPrice(7000, cbChoco.isSelected());
+    }//GEN-LAST:event_cbChocoActionPerformed
+
+    private void cbBrownSugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbBrownSugarActionPerformed
+       updateToppingPrice(5000, cbBrownSugar.isSelected());
+    }//GEN-LAST:event_cbBrownSugarActionPerformed
+
+    private void cbAlmondActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbAlmondActionPerformed
+        updateToppingPrice(11000, cbAlmond.isSelected());
+    }//GEN-LAST:event_cbAlmondActionPerformed
+
+    private void cbSilverqueenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbSilverqueenActionPerformed
+        updateToppingPrice(13000, cbSilverqueen.isSelected());
+    }//GEN-LAST:event_cbSilverqueenActionPerformed
+
+    private void cbNoToppingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbNoToppingActionPerformed
+        updateToppingPrice(0, cbNoTopping.isSelected());
+    }//GEN-LAST:event_cbNoToppingActionPerformed
+
+    private void btnTambahActionPerformed(java.awt.event.ActionEvent evt) {                                          
+       quantity++;
+       
+       tfJumlah.setText(String.valueOf(quantity));
+    }
+    private void updateBreadPrice(int price) {
+        breadPrice = price;
+        updateTotal();
+    }
+
+    private void updateToppingPrice(int toppingPrice, boolean isSelected) {
+        if (isSelected) {
+            totalToppingPrice += toppingPrice;
+        }else {
+            totalToppingPrice -= toppingPrice;
+        }
+        updateTotal();
+    }
+
+    private void updateQuantity(int change) {
+        quantity = Math.max(0, quantity + change);
+        tfJumlah.setText(String.valueOf(quantity));
+        updateTotal();
+    }
+
+    private void updateTotal() {
+                // Hitung total harga sebelum diskon
+        total = (breadPrice + totalToppingPrice) * quantity;
+
+        // Jika total lebih dari 100.000, terapkan diskon 5%
+        if (total > 100000) {
+            double diskon = total * 0.05;  // 5% dari total
+            total = (int) (total - diskon);        // Kurangi total dengan diskon
+            JOptionPane.showMessageDialog(this, "Selamat! Anda mendapatkan diskon 5% jadi total pembeliannya ini.");
+        }
+
+        // Tampilkan total setelah diskon (jika ada)
+        tfTotal.setText(String.valueOf(total));
+
+    }
+
+    private void calculateTotal() {
+        updateTotal();
+        JOptionPane.showMessageDialog(this, "Total: Rp. " + total);
+    }
+
+    private void resetForm() {
+        quantity = 0;
+        total = 0;
+        breadPrice = 0;
+        toppingPrice = 0;
+        totalToppingPrice = 0;
+        
+        ButtonGroup breadGroup = new ButtonGroup();
+        breadGroup.add(rbFlossRoll);
+        breadGroup.add(rbSugarPillow);
+        breadGroup.add(rbWhiteToast);
+        breadGroup.add(rbSausageDiva);
+        breadGroup.add(rbChantilly);
+        breadGroup.add(rbCroissant);
+        breadGroup.clearSelection();
+
+        cbChesee.setSelected(false);
+        cbChoco.setSelected(false);
+        cbBrownSugar.setSelected(false);
+        cbAlmond.setSelected(false);
+        cbSilverqueen.setSelected(false);
+        cbNoTopping.setSelected(false);
+
+        tfJumlah.setText("0");
+        tfTotal.setText("0");
+        tfCash.setText("");
+        tfKembalian.setText("");
+    }
+
+    private void calculateChange() {
+        try {
+            int cash = Integer.parseInt(tfCash.getText());
+            int change = cash - total;
+            if (change >= 0) {
+                tfKembalian.setText(String.valueOf(change));
+            } else {
+                JOptionPane.showMessageDialog(this, "Insufficient cash!");
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Invalid cash input!");
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -375,13 +621,13 @@ public class MakoBakery extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MakoBakery.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            Logger.getLogger(MakoBakery.class.getName()).log(Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MakoBakery.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            Logger.getLogger(MakoBakery.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MakoBakery.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            Logger.getLogger(MakoBakery.class.getName()).log(Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MakoBakery.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            Logger.getLogger(MakoBakery.class.getName()).log(Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -400,6 +646,16 @@ public class MakoBakery extends javax.swing.JFrame {
     private javax.swing.JButton btnTotal;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.ButtonGroup buttonGroup3;
+    private javax.swing.ButtonGroup buttonGroup4;
+    private javax.swing.ButtonGroup buttonGroup5;
+    private javax.swing.JCheckBox cbAlmond;
+    private javax.swing.JCheckBox cbBrownSugar;
+    private javax.swing.JCheckBox cbChesee;
+    private javax.swing.JCheckBox cbChoco;
+    private javax.swing.JCheckBox cbNoTopping;
+    private javax.swing.JCheckBox cbSilverqueen;
+    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -410,21 +666,16 @@ public class MakoBakery extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JRadioButton rbAlmond;
-    private javax.swing.JRadioButton rbBrownSugar;
     private javax.swing.JRadioButton rbChantilly;
-    private javax.swing.JRadioButton rbCheese;
-    private javax.swing.JRadioButton rbChoco;
     private javax.swing.JRadioButton rbCroissant;
     private javax.swing.JRadioButton rbFlossRoll;
-    private javax.swing.JRadioButton rbNoTopping;
     private javax.swing.JRadioButton rbSausageDiva;
-    private javax.swing.JRadioButton rbSilverqueen;
     private javax.swing.JRadioButton rbSugarPillow;
     private javax.swing.JRadioButton rbWhiteToast;
     private javax.swing.JTextField tfCash;
     private javax.swing.JTextField tfJumlah;
-    private javax.swing.JTextField tfKembali;
+    private javax.swing.JTextField tfKembalian;
     private javax.swing.JTextField tfTotal;
     // End of variables declaration//GEN-END:variables
+
 }
