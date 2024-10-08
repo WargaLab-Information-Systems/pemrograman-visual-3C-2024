@@ -524,7 +524,7 @@ public class NewJFrame extends javax.swing.JFrame {
                 ||negara.getText(). isEmpty()
                 ||alasan.getText(). isEmpty()
                 ){
-                JOptionPane.showMessageDialog(null, "verify that you are over 21 years of age and agree to the terms and conditions.", "WARNING", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "data gak lengkap.", "WARNING", JOptionPane.WARNING_MESSAGE);
             }else{
                  i.setVisible(true);
                          dispose();
