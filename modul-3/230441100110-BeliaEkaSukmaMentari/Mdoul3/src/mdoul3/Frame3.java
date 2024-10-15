@@ -4,7 +4,7 @@
  */
 package mdoul3;
 
-import javax.swing.DefaultListModel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -25,40 +25,40 @@ public class Frame3 extends javax.swing.JFrame {
         initComponents();
         tfnama.setText(nama);  // Mengisi field dengan nama
         tfabsen.setText(absen); // Mengisi field dengan absen
-        DefaultListModel<String> listModel = new DefaultListModel<>();
-        for (String data : dataBulanan) {
-            listModel.addElement(data);
-        }
-        list.setModel(listModel);
-        // Variabel untuk menyimpan total kembalian
+        DefaultTableModel model = new DefaultTableModel(new Object[]{"Bulan", "Nominal"}, 0);
         double totalKembalian = 0;
 
-         // Menghitung kembalian untuk setiap bulan
+        // Mengisi tabel dengan data dan menghitung kembalian
         for (String data : dataBulanan) {
-        String[] parts = data.split(": ");
-        if (parts.length == 2) {
-            String bulan = parts[0].trim();
-            String nominalString = parts[1].trim();
-
-            try {
-                double nominalBulanan = Double.parseDouble(nominalString);
-                if (nominalBulanan > 500000) {
-                    double kembalian = nominalBulanan - 500000;
-                    totalKembalian += kembalian; // Menambahkan kembalian ke total
+            String[] parts = data.split(": ");
+            if (parts.length == 2) {
+                String bulan = parts[0].trim();
+                String nominalString = parts[1].trim();
+                model.addRow(new Object[]{bulan, nominalString});
+                
+                try {
+                    double nominalBulanan = Double.parseDouble(nominalString);
+                    if (nominalBulanan > 500000) {
+                        double kembalian = nominalBulanan - 500000;
+                        totalKembalian += kembalian; // Menambahkan kembalian ke total
+                    }
+                } catch (NumberFormatException e) {
+                    // Tangani kesalahan parsing sesuai kebutuhan
                 }
-            } catch (NumberFormatException e) {
-                // Jika parsing gagal, bisa diabaikan atau ditangani sesuai kebutuhan
             }
         }
-    }
 
-    // Menampilkan total kembalian di text field
-    if (totalKembalian > 0) {
-        lebih.setText("Total Kembalian: " + totalKembalian + " (bisa diambil besok di kantor tata usaha)");
-    } else {
-        lebih.setText(""); // Kosongkan jika tidak ada kembalian
+    // Set model untuk tabel
+        table.setModel(model);
+
+        // Menampilkan total kembalian di label
+        if (totalKembalian > 0) {
+            lebih.setText("Total Kembalian: " + totalKembalian + " (bisa diambil besok di kantor tata usaha)");
+        } else {
+            lebih.setText(""); // Kosongkan jika tidak ada kembalian
+        }
     }
-    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -77,11 +77,11 @@ public class Frame3 extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         tfnama = new javax.swing.JTextField();
         tfabsen = new javax.swing.JTextField();
-        jScrollPane14 = new javax.swing.JScrollPane();
-        list = new javax.swing.JList<>();
         jPanel3 = new javax.swing.JPanel();
         lebih = new javax.swing.JTextField();
         btnKeluar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        table = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -99,26 +99,25 @@ public class Frame3 extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(67, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(45, 45, 45))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(139, 139, 139))))
+                .addGap(150, 150, 150)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(66, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(62, 62, 62))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(29, Short.MAX_VALUE)
+                .addContainerGap(27, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
-                .addGap(27, 27, 27))
+                .addGap(33, 33, 33))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 610, 110));
 
         jPanel2.setBackground(new java.awt.Color(102, 102, 255));
 
@@ -129,8 +128,6 @@ public class Frame3 extends javax.swing.JFrame {
         tfnama.setEditable(false);
 
         tfabsen.setEditable(false);
-
-        jScrollPane14.setViewportView(list);
 
         jPanel3.setLayout(new java.awt.GridLayout(2, 2));
         jPanel3.add(lebih);
@@ -143,24 +140,50 @@ public class Frame3 extends javax.swing.JFrame {
         });
         jPanel3.add(btnKeluar);
 
+        table.setBackground(new java.awt.Color(204, 204, 255));
+        table.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Bulan", "Status Pembayaran"
+            }
+        ));
+        jScrollPane1.setViewportView(table);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(18, 18, 18)
-                        .addComponent(tfabsen))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(18, 18, 18)
-                        .addComponent(tfnama, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(333, Short.MAX_VALUE))
-            .addComponent(jScrollPane14)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(40, 40, 40)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jLabel4)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(tfabsen))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jLabel3)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(tfnama, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(15, 15, 15)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 575, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 14, Short.MAX_VALUE))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -173,14 +196,14 @@ public class Frame3 extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(tfabsen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 104, 594, 460));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 104, 610, 530));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -233,9 +256,9 @@ public class Frame3 extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JScrollPane jScrollPane14;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField lebih;
-    private javax.swing.JList<String> list;
+    private javax.swing.JTable table;
     private javax.swing.JTextField tfabsen;
     private javax.swing.JTextField tfnama;
     // End of variables declaration//GEN-END:variables
