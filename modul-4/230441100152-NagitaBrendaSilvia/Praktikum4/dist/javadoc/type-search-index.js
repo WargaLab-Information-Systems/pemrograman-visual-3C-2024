@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"praktikum4","l":"FRM_GameTebak"},{"p":"praktikum4","l":"Praktikum4"}];updateSearchResults();
