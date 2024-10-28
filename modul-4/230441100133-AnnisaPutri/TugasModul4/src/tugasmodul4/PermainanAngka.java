@@ -17,7 +17,7 @@ public class PermainanAngka extends javax.swing.JFrame {
     
     public PermainanAngka() {
         initComponents();
-         resetPermainan();
+        resetPermainan();
         daftarSkor = new ArrayList<>();
     }
 
@@ -220,47 +220,61 @@ public class PermainanAngka extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnTebakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTebakActionPerformed
-        // TODO add your handling code here:
-         try {
-            int tebakan = Integer.parseInt(tfCobaTebak.getText().trim());
-            percobaan++;
-
-            if (tebakan < target) {
-                tfCek.setText("Angka terlalu kecil");
-            } else if (tebakan > target) {
-                tfCek.setText("Angka terlalu besar");
-            } else {
-                // Menampilkan pesan "Anda Berhasil" di JOptionPane
-                JOptionPane.showMessageDialog(this, "Anda Berhasil!");
-
-                // Menampilkan angka yang benar di tfCek
-                tfCek.setText("Aku Adalah Angka " + target);
-                String nama = JOptionPane.showInputDialog(this, "Masukkan Nama Anda:");
-                if (nama != null && !nama.trim().isEmpty()) { // Cek jika nama valid
-                    int skor = (maxPercobaan - percobaan + 1) * 10;
-                    daftarSkor.add(nama + " - Score: " + skor);
-                    updateDaftarSkor();
-                }
-                resetPermainan();
-                return;
-            }
-
-            tfScore.setText(String.valueOf((maxPercobaan - percobaan) * 10));
-
-            if (percobaan >= maxPercobaan) {
-                JOptionPane.showMessageDialog(this, "Anda Gagal! Targetnya adalah: " + target);
-                resetPermainan();
-            }
-        } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(this, "Masukkan angka yang valid!");
-        }                   
-    }//GEN-LAST:event_btnTebakActionPerformed
-
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
         // TODO add your handling code here:
-         resetPermainan();
+        resetPermainan();
     }//GEN-LAST:event_btnResetActionPerformed
+
+    private void btnTebakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTebakActionPerformed
+        // TODO add your handling code here:
+        try {
+    // Parsing input angka dari pengguna
+    int tebakan = Integer.parseInt(tfCobaTebak.getText().trim());
+    if (tebakan < 1 || tebakan > 100) {
+        JOptionPane.showMessageDialog(this, "Masukkan angka antara 1 hingga 100!");
+        return;
+    }
+    percobaan++;
+
+    // Logika pengecekan tebakan
+    if (tebakan < target) {
+        tfCek.setText("Angka terlalu kecil");
+    } else if (tebakan > target) {
+        tfCek.setText("Angka terlalu besar");
+    } else {
+        // Jika tebakan benar
+        JOptionPane.showMessageDialog(this, "Anda Berhasil!");
+        tfCek.setText("Aku Adalah Angka " + target);
+
+        // Meminta nama pengguna untuk skor
+        String nama = JOptionPane.showInputDialog(this, "Masukkan Nama Anda:");
+        if (nama != null && !nama.trim().isEmpty()) {
+            int skor = (maxPercobaan - percobaan + 1) * 10;
+            daftarSkor.add(nama + " - Score: " + skor);
+            updateDaftarSkor();
+        }
+
+        resetPermainan();
+        return;
+    }
+
+    // Update skor dan jumlah percobaan yang tersisa
+    int sisaPercobaan = maxPercobaan - percobaan;
+    tfScore.setText(String.valueOf(sisaPercobaan * 10));
+    btnTebak.setText("TEBAK (" + sisaPercobaan + ")");
+
+    // Jika percobaan habis
+    if (percobaan >= maxPercobaan) {
+        JOptionPane.showMessageDialog(this, "Anda Gagal! Targetnya adalah: " + target);
+        resetPermainan();
+    }
+} catch (NumberFormatException ex) {
+    // Menampilkan pesan jika input tidak valid
+    JOptionPane.showMessageDialog(this, "Masukkan angka yang valid!");
+}
+        
+          
+    }//GEN-LAST:event_btnTebakActionPerformed
      private void resetPermainan() {
         target = new Random().nextInt(100) + 1;
         percobaan = 0;
