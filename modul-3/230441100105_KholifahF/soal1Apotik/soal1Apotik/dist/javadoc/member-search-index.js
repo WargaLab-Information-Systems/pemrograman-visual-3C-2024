@@ -1,0 +1,1 @@
+memberSearchIndex = [{"p":"soal1apotik","c":"apotik","l":"apotik()","u":"%3Cinit%3E()"},{"p":"soal1apotik","c":"apotik","l":"main(String[])","u":"main(java.lang.String[])"},{"p":"soal1apotik","c":"Soal1Apotik","l":"main(String[])","u":"main(java.lang.String[])"},{"p":"soal1apotik","c":"Soal1Apotik","l":"Soal1Apotik()","u":"%3Cinit%3E()"}];updateSearchResults();
