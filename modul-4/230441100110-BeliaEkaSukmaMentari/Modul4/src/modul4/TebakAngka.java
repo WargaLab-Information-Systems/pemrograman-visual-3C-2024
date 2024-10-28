@@ -89,7 +89,7 @@ public class TebakAngka extends javax.swing.JFrame {
 
         btnTebak.setBackground(new java.awt.Color(153, 255, 153));
         btnTebak.setFont(new java.awt.Font("Cambria", 0, 12)); // NOI18N
-        btnTebak.setText("Tebak (10)");
+        btnTebak.setText("Tebak(10)\n");
         btnTebak.setActionCommand("Tebak (10)");
         btnTebak.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -224,8 +224,12 @@ public class TebakAngka extends javax.swing.JFrame {
     private void btnTebakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTebakActionPerformed
         try {
             int tebakan = Integer.parseInt(tfCobaTebak.getText().trim());
+            if (tebakan < 1 || tebakan > 100) {
+                JOptionPane.showMessageDialog(this, "Masukkan angka antara 1 hingga 100!");
+                return;
+            }
             percobaan++;
-
+            
             if (tebakan < target) {
                 tfCek.setText("Angka terlalu kecil");
             } else if (tebakan > target) {
@@ -243,9 +247,11 @@ public class TebakAngka extends javax.swing.JFrame {
                 resetPermainan();
                 return;
             }
-
+            
+            int sisaPercobaan = maxPercobaan - percobaan;
             tfScore.setText(String.valueOf((maxPercobaan - percobaan) * 10));
-
+            btnTebak.setText("Tebak (" + sisaPercobaan + ")");
+            
             if (percobaan >= maxPercobaan) {
                 JOptionPane.showMessageDialog(this, "Anda Gagal! Targetnya adalah: " + target);
                 resetPermainan();
