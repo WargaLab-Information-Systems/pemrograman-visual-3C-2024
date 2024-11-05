@@ -40,8 +40,8 @@ public class tampilan1 extends javax.swing.JFrame {
         
         tabel_transaksi.setModel(modelt);
         tabel_proyek.setEnabled(false);
-        modelt.addColumn("ID_karyawan");
-        modelt.addColumn("ID_proyek");
+        modelt.addColumn("nama");
+        modelt.addColumn("nama_proyek");
         modelt.addColumn("Peran");
         
         loadDataK();
@@ -95,18 +95,21 @@ public class tampilan1 extends javax.swing.JFrame {
         modelt.setRowCount(0);
         
         try {
-            String sql = "SELECT * FROM transaksi";
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                modelt.addRow(new Object[]{
-                    rs.getInt("id_karyawan"),
-                    rs.getString("id_proyek"),
-                    rs.getString("peran")
-                });
-            }
+        String sql = "SELECT t.id_karyawan, k.nama AS nama_karyawan, t.id_proyek, p.nama_proyek, t.peran " +
+                     "FROM transaksi t " +
+                     "JOIN karyawan k ON t.id_karyawan = k.id " +
+                     "JOIN proyek p ON t.id_proyek = p.id";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            modelt.addRow(new Object[]{
+                rs.getString("nama_karyawan"),  // Mengganti ID dengan nama
+                rs.getString("nama_proyek"),    // Mengganti ID dengan nama
+                rs.getString("peran")
+            });
+        }
         } catch (SQLException e) {
-            System.out.println("Error Save Data" + e.getMessage());
+            System.out.println("Error memuat data: " + e.getMessage());
         }
     }
 
@@ -854,10 +857,10 @@ public class tampilan1 extends javax.swing.JFrame {
     }//GEN-LAST:event_update1ActionPerformed
 
     private void reset1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reset1ActionPerformed
-    tf_nama.setText("");
-    tf_jabatan.setText("");
-    tf_departemen.setText("");
-    tf_id.setText("");
+        tf_nama.setText("");
+        tf_jabatan.setText("");
+        tf_departemen.setText("");
+        tf_id.setText("");
     }//GEN-LAST:event_reset1ActionPerformed
 
     private void tambah3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tambah3ActionPerformed
@@ -952,9 +955,9 @@ public class tampilan1 extends javax.swing.JFrame {
     }//GEN-LAST:event_kembali2ActionPerformed
 
     private void reset2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reset2ActionPerformed
-    Tf_nama.setText("");
-    Tf_durasi.setText("");
-    Tf_id.setText("");
+        Tf_nama.setText("");
+        Tf_durasi.setText("");
+        Tf_id.setText("");
     }//GEN-LAST:event_reset2ActionPerformed
     
     private void loadComboBoxKaryawan() {
