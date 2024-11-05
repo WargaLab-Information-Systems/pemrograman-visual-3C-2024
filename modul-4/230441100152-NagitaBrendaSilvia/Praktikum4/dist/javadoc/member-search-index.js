@@ -1,0 +1,1 @@
+memberSearchIndex = [{"p":"praktikum4","c":"FRM_GameTebak","l":"FRM_GameTebak()","u":"%3Cinit%3E()"},{"p":"praktikum4","c":"FRM_GameTebak","l":"main(String[])","u":"main(java.lang.String[])"},{"p":"praktikum4","c":"Praktikum4","l":"main(String[])","u":"main(java.lang.String[])"},{"p":"praktikum4","c":"Praktikum4","l":"Praktikum4()","u":"%3Cinit%3E()"}];updateSearchResults();

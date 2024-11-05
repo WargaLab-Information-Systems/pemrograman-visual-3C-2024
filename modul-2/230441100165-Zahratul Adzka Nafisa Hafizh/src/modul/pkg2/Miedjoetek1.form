@@ -1,0 +1,20 @@
+
+    private void btResetActionPerformed(java.awt.event.ActionEvent evt) {                                        
+        // TODO add your handling code here:
+        txtnama.setText("");
+        txtspp.setText("");
+        cbjanuari.setSelected(false);
+        cbfebruari.setSelected(false);
+        cbmaret.setSelected(false);
+        cbapril.setSelected(false);
+        cbmei.setSelected(false);
+        cbjuni.setSelected(false);
+        cbjuli.setSelected(false);
+        cbagustus.setSelected(false);
+        cbseptember.setSelected(false);
+        cboktober.setSelected(false);
+        cbnovember.setSelected(false);
+        cbdesember.setSelected(false);
+        txtAreariwayat.setText("");
+
+    }                                       
