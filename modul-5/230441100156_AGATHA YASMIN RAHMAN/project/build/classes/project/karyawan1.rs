@@ -1,0 +1,15 @@
+karyawan1$13
+karyawan1$12
+karyawan1$11
+karyawan1$10
+karyawan1$4
+karyawan1$3
+karyawan1$6
+karyawan1
+karyawan1$5
+karyawan1$8
+karyawan1$7
+karyawan1$9
+karyawan1$2
+karyawan1$1
+karyawan1$karyawan1
